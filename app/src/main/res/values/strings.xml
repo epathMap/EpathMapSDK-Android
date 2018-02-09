@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">epathMap</string>
+    <string name="please_grant_permission">请授予权限</string>
+</resources>

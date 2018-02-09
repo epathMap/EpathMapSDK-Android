@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff3332</color>
+    <color name="colorPrimaryDark">#ff3332</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorDominant">#ff3332</color>
+    <color name="colorGrayDot">#D3D3D3</color>
+    <color name="colorDominantClick">#37CFA6</color>
+    <color name="colorBackGround">#f1f5f8</color>
+    <color name="colorRed">#e7383d</color>
+    <color name="colorBlue">#005fbe</color>
+    <color name="colorOrange">#f58e23</color>
+    <color name="colorText">#4b4b4b</color>
+    <color name="transparent_background">#50000000</color>
+</resources>
