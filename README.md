@@ -9,7 +9,7 @@ EpathmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图�
 
 ## 添加依赖
 
-compile (''com.shitu.location:epathmap:1.5.1', {
+compile ('com.shitu.location:epathmap:1.5.1', {
         exclude group: 'com.android.support'
     })
 
