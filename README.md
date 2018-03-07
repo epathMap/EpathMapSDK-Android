@@ -70,7 +70,8 @@ ndk {
 ``` 
     使用默认配置信息
     EpathMapSDK.init(context, EPATHMAP_APP_KEY);
-    或
+        
+        ```
     定制配置信息 ,使用微信分享功能请实现相关的接口
     EpathMapSDK.init(new EpathMapSDK.Configuration.Builder(context)
                 .appKey(Constants.EPATHMAP_APP_KEY)
@@ -80,7 +81,7 @@ ndk {
                 .build());
                 
 
-```
+
 SDK内部实现了分享功能，使用的前提是需要申请微信的appkey，并且需要实现接口ShareToWechatListener接口
 参考代码如下：
 ```
