@@ -180,17 +180,17 @@ epathClient.registerLocationListener(new EpathLocationListener() {
 epathClient.start();
 
 
-activity 结束时调用
-
+## activity 结束时调用
+```
 @Override
 protected void onDestroy() {
     super.onDestroy();
     epathClient.stop();
 }
-
+```
 
 ## 混淆
-
+```
 -dontwarn com.baidu.**
 -keep class com.baidu.** {*;}
 -dontwarn com.iflytek.**
@@ -201,7 +201,6 @@ protected void onDestroy() {
 
 微信分享以及复制跳转请参考demo
 ## FAQ
-1.0
 
 出现上面的类似xml资源文件缺失的情况:
 两种解决方案:
@@ -209,22 +208,19 @@ protected void onDestroy() {
 建议方式.建议版本号25.3.1
 2. 修改项目的support 支持和  compile 'com.android.support:appcompat-v7:25.3.1' 版本号一致
 
-2.0 
-
 app如果使用了okhttp ,glide ...出现第三发开源库 冲突
 两种解决方案:
 1.通过  exclude group: "com.squareup.okhttp3" 方式处理
 然后保留项目的okhttp和glide 
+
+
 2.保持和sdk的一致引入的第三方库版本号一致.否则有可能出现冲突
 
 "glide"             : "com.github.bumptech.glide:glide:3.7.0",
 "okhttp"            : "com.squareup.okhttp3:okhttp:3.8.0",
 "gson"              : "com.google.code.gson:gson:2.8.2",
 
-
- 3.0
-
-    allprojects {
+allprojects {
         repositories {
             jcenter()
             maven { url "https://jitpack.io" }
@@ -234,7 +230,7 @@ app如果使用了okhttp ,glide ...出现第三发开源库 冲突
         }
     }
     
-    compileOptions {
+compileOptions {
          sourceCompatibility JavaVersion.VERSION_1_8
          targetCompatibility JavaVersion.VERSION_1_8
      }
