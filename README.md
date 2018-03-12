@@ -66,26 +66,26 @@ ndk {
 ## 使用
 初始化
 
+
 在Application 的onCreate 方法中进行初始化
-``` 
-    使用默认配置信息
-    EpathMapSDK.init(context, EPATHMAP_APP_KEY);
-        
-        ```
-    定制配置信息 ,使用微信分享功能请实现相关的接口
-    EpathMapSDK.init(new EpathMapSDK.Configuration.Builder(context)
+## 使用默认配置信息
+```
+EpathMapSDK.init(context, EPATHMAP_APP_KEY);
+```
+## 定制配置信息 ,使用微信分享功能请实现相关的接口
+```
+EpathMapSDK.init(new EpathMapSDK.Configuration.Builder(context)
                 .appKey(Constants.EPATHMAP_APP_KEY)
                 .shareToWechatListener(this)
                 //正式版请关闭 默认是关闭的
                 .debug(false)
                 .build());
-                
+```                
 
 
 SDK内部实现了分享功能，使用的前提是需要申请微信的appkey，并且需要实现接口ShareToWechatListener接口
 参考代码如下：
 ```
-
     参考代码
    @Override
     public void shareToWechat(String url, String title, String description, Bitmap bitmap) {
