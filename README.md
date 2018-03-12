@@ -161,7 +161,6 @@ EpathMapSDK.openEpathMapActivity(context, map_id);
 或
 EpathMapSDK.openEpathMapActivity(context, map_id, target_id);
 
-
 定位监听,获取当前的位置,可以参考ipslocation demo ,需要提前获取定位和蓝牙权限
 epathClient = new EpathClient(context, map_id);
 epathClient.registerLocationListener(new EpathLocationListener() {
