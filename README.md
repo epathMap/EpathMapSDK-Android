@@ -163,7 +163,6 @@ EpathMapSDK.openEpathMapActivity(context, map_id, target_id);
 
 
 定位监听,获取当前的位置,可以参考ipslocation demo ,需要提前获取定位和蓝牙权限
-```
 epathClient = new EpathClient(context, map_id);
 epathClient.registerLocationListener(new EpathLocationListener() {
     @Override
@@ -178,7 +177,7 @@ epathClient.registerLocationListener(new EpathLocationListener() {
     }
 });
 epathClient.start();
-
+```
 
 ## activity 结束时调用
 ```
@@ -215,7 +214,7 @@ app如果使用了okhttp ,glide ...出现第三发开源库 冲突
 
 
 2.保持和sdk的一致引入的第三方库版本号一致.否则有可能出现冲突
-
+```
 "glide"             : "com.github.bumptech.glide:glide:3.7.0",
 "okhttp"            : "com.squareup.okhttp3:okhttp:3.8.0",
 "gson"              : "com.google.code.gson:gson:2.8.2",
@@ -228,11 +227,11 @@ allprojects {
                 dirs 'libs'
             }
         }
-    }
+   }
     
 compileOptions {
          sourceCompatibility JavaVersion.VERSION_1_8
          targetCompatibility JavaVersion.VERSION_1_8
-     }
-
+}
+```
 
