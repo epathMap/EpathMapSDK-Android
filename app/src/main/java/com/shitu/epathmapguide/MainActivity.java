@@ -21,6 +21,9 @@ import com.shitu.epathmapguide.adapter.CustomerMapAdapter;
 import com.shitu.epathmapguide.app.CustomerApplication;
 import com.shitu.epathmapguide.common.ViewUtils;
 import com.shitu.epathmapguide.data.MapData;
+import com.shitu.location.epathmap.EpathClient;
+import com.shitu.location.epathmap.EpathLocation;
+import com.shitu.location.epathmap.EpathLocationListener;
 import com.shitu.location.epathmap.GetCallBack;
 import com.shitu.location.epathmap.utils.T;
 
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private RecyclerView recyclerView;
     protected static final int MY_PERMISSIONS_REQUEST_WRITE_SD_AND_RECORD_AUDIO = 0x03;
     protected static final int MY_PERMISSIONS_REQUEST_FINE_LCOATION = 0x04;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +61,37 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             customerMapData = new ArrayList<>();
             customerMapAdapter = new CustomerMapAdapter(R.layout.item_customer_data, customerMapData);
             customerMapAdapter.openLoadAnimation();
-            customerMapAdapter.setOnItemClickListener((adapter1, view, position) ->
-                    EpathMapSDK.openEpathMapActivity(MainActivity.this, customerMapData.get(position).getObjectId()));
+            customerMapAdapter.setOnItemClickListener((adapter1, view, position) -> {
+
+
+                        String mapId = customerMapData.get(position).getObjectId();
+                        EpathClient epathClient = new EpathClient(MainActivity.this, mapId);
+
+                        epathClient.registerLocationListener(new EpathLocationListener() {
+                            @Override
+                            public void onReceiveLocation(EpathLocation ipsLocation) {
+                                if (ipsLocation.isInThisMap()) {
+                                    //获取本地定位成功，去获取是否在目的建筑物范围内
+                                    epathClient.startCheckLocationRange(mapId, "yinshuiji");
+                                }
+                            }
+                            @Override
+                            public void onReceiveRange(boolean isInclude) {
+                                if (isInclude) {
+                                    Toast.makeText(MainActivity.this, "打卡成功", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(MainActivity.this, "打卡失败", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                        epathClient.start();
+
+//                        EpathMapSDK.openEpathMapActivity(MainActivity.this, customerMapData.get(position).getObjectId());
+                    }
+
+            );
+
+
             recyclerView.setAdapter(customerMapAdapter);
         }
     }
@@ -70,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
     private boolean isFirstRefresh = true;
+
     @Override
     public void onRefresh() {
         swipeRefreshLayout.setRefreshing(true);
@@ -176,7 +210,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         }
         return localIntent;
     }
-
 
 
     @Override
