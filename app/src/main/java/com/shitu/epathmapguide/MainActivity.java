@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             long secondtime = System.currentTimeMillis();
             if (secondtime - firstime > 3000) {
-                Toast.makeText(this, "再按一次返回键退出", Toast.LENGTH_SHORT);
+                Toast.makeText(MainActivity.this, "再按一次返回键退出", Toast.LENGTH_SHORT).show();
                 firstime = System.currentTimeMillis();
                 return true;
             } else {

@@ -65,7 +65,7 @@ public class GuideActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                if (position == 3) {
+                if (position == 2) {
                     tvStart.setVisibility(View.VISIBLE);
                 } else {
                     tvStart.setVisibility(View.GONE);
